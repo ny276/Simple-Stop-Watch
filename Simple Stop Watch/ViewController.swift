@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Reset(_ sender: Any) {
+        myTimer.invalidate()
         let min = 0
         let sec = 0
         let msec = 0
