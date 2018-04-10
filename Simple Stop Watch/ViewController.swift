@@ -20,7 +20,17 @@ class ViewController: UIViewController {
             self.updateTime()
         })
     }
-
+    @IBAction func stop(_ sender: Any) {
+        myTimer.invalidate()
+    }
+    
+    @IBAction func Reset(_ sender: Any) {
+        let min = 0
+        let sec = 0
+        let msec = 0
+        timeLabel.text = String(format: "%02d:%02d:%02d", min, sec, msec)
+    }
+    
     func updateTime() {
         count = count + 1
         let min = count / 60 / 100
@@ -29,5 +39,10 @@ class ViewController: UIViewController {
         timeLabel.text = String(format: "%02d:%02d:%02d", min, sec, msec)
     }
 
+    @IBAction func start(_ sender: Any) {
+        myTimer = Timer.scheduledTimer(withTimeInterval: 1/100, repeats: true, block: {(myTimer) in
+            self.updateTime()
+      })
+    }
 }
 
